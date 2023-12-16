@@ -1,0 +1,48 @@
+---
+title: "Sample RMarkdown"
+author: "Shanthal"
+date: "`r Sys.Date()`"
+output: html_document
+---
+# Introduction
+
+This report provides an overview of students in different courses and their year levels, including their number of absences.
+
+## Data
+
+We have a dataset that contains information about students, including their names, courses, year levels, and number of absences. Below loads the data of the first few records.
+
+```{r}
+# Sample data
+students <- data.frame(
+  Name = c("Alice", "Bob", "Charlie", "David", "Eve"),
+  Course = c("BSIT", "BSCS", "BSIT", "BMMA", "BSCS"),
+  Year_Level = c(2, 3, 1, 4, 2),
+  Absences = c(3, 2, 5, 1, 4)
+)
+
+# Show the first few records
+head(students)
+```
+
+## Graph View
+
+This shows a graph view of the student data, including their number of absences.
+```{r}
+# Load the necessary packages
+library(ggplot2)
+
+# Create a bar graph showing the number of absences
+ggplot(students, aes(x = Name, y = Absences, fill = Course)) +
+  geom_bar(stat = "identity") +
+  labs(title = "Number of Absences by Student and Course", x = "Student Name", y = "Number of Absences") +
+  scale_fill_brewer(palette = "Set1") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+```
+
+### This is an h3 tag
+
+I added a new column named *"Absences"* to the student data frame and included it in the data display. You can now see the number of absences for each student in the report. <http://rmarkdown.rstudio.com>
+
+
